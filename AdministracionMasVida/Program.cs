@@ -20,6 +20,7 @@ var constr = "server=localhost;database=InitialDataBase;uid=root;pwd=pwd123;port
 builder.Services
     .AddDbContext<AdministracionMasVidaDbcontext>(options =>
         options.UseMySql(constr, ServerVersion.AutoDetect(constr)));
+
 builder.Services.AddScoped<IServidorService, ServidorService>();
 
 var app = builder.Build();

@@ -8,6 +8,8 @@ namespace AdministracionMasVidaDbContext.Services.Interfaces
 	{
 		ResultApi NewServidor(Servidor servidor);
 		ResultApi Get();
+		ResultApi ActualizarServidor(Servidor servidor);
+		ResultApi EliminarServidor(int Id);
 	}
 }
 

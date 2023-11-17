@@ -20,6 +20,26 @@ namespace AdministracionMasVidaDbContext.Controllers
             var result = _servidorService.NewServidor(servidor);
             return StatusCode(result.StatusCode, result);
         }
+        [HttpGet]
+        public ActionResult Get ()
+        {
+            var result = _servidorService.Get();
+            return StatusCode(result.StatusCode, result);
+        }
+        [HttpPut]
+        public ActionResult ActualizarServidor(Servidor servidor)
+        {
+            var result = _servidorService.ActualizarServidor(servidor);
+            return StatusCode(result.StatusCode, result);
+        }
+        [HttpDelete]
+        public ActionResult EliminarServidor(int Id)
+        {
+            var result = _servidorService.EliminarServidor(Id);
+            return StatusCode(result.StatusCode, result);
+
+        }
+
 
        
         
