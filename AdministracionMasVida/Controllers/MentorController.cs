@@ -1,11 +1,12 @@
 ﻿using System;
+using Microsoft.AspNetCore.Mvc;
+
 namespace AdministracionMasVidaDbContext.Controllers
 {
-	public class MentorController
+    [ApiController]
+    [Route("[controller]")]
+    public class MentorController
 	{
-		public MentorController()
-		{
-		}
 	}
 }
 

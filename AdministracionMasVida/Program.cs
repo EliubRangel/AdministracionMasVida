@@ -22,6 +22,7 @@ builder.Services
         options.UseMySql(constr, ServerVersion.AutoDetect(constr)));
 
 builder.Services.AddScoped<IServidorService, ServidorService>();
+builder.Services.AddScoped<IGrupoPequenoService, GrupoPequenoService>();
 
 var app = builder.Build();
 

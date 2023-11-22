@@ -11,7 +11,7 @@ namespace AdministracionMasVidaDbContext.Entities
 		public ICollection<Servidor>? Lideres { get; set; }
 		public string Direccion { get; set; }
 		public string Dia { get; set; }
-		public string HoraInico { get; set; }
+		public string HoraInicio { get; set; }
 		public string HoraFin { get; set; }
 		public string Descripcion { get; set; }
 		public ICollection<Miembro>? Miembro { get; set; }
