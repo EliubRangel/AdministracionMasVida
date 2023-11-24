@@ -63,13 +63,13 @@ namespace AdministracionMasVida.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Dia = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    HoraInico = table.Column<string>(type: "longtext", nullable: false)
+                    HoraInicio = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     HoraFin = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Descripcion = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    MentorId1 = table.Column<int>(type: "int", nullable: false),
+                    MentorId1 = table.Column<int>(type: "int", nullable: true),
                     MentorId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
@@ -163,8 +163,7 @@ namespace AdministracionMasVida.Migrations
                 table: "GrupoPequeno",
                 column: "MentorId1",
                 principalTable: "Servidor",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
+                principalColumn: "Id");
         }
 
         /// <inheritdoc />

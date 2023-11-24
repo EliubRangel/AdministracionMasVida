@@ -32,9 +32,9 @@ namespace AdministracionMasVidaDbContext.Controllers
         }
         [HttpDelete]
 
-        public ActionResult RemoveLider(int IdLider)
+        public ActionResult RemoveLider(int IdLider, int IdGp)
         {
-            var result = _GrupoPequenoService.RemoveLider(IdLider);
+            var result = _GrupoPequenoService.RemoveLider(IdLider, IdGp);
             return StatusCode(result.StatusCode, result);
         }
     }

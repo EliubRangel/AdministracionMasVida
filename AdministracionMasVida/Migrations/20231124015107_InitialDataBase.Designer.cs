@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AdministracionMasVida.Migrations
 {
     [DbContext(typeof(AdministracionMasVidaDbcontext))]
-    [Migration("20231122015951_database")]
-    partial class database
+    [Migration("20231124015107_InitialDataBase")]
+    partial class InitialDataBase
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -44,7 +44,7 @@ namespace AdministracionMasVida.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("HoraInico")
+                    b.Property<string>("HoraInicio")
                         .IsRequired()
                         .HasColumnType("longtext");
 
