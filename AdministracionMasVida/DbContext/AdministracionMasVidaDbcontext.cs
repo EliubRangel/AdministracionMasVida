@@ -7,7 +7,6 @@ namespace AdministracionMasVidaDbContext.DbContexts
     public class AdministracionMasVidaDbcontext : DbContext
     {
         public DbSet<GrupoPequeno> GrupoPequeno { get; set; }
-        public DbSet<Mentor> Mentor { get; set; }
         public DbSet<Miembro> Miembro { get; set; }
         public DbSet<Servidor> Servidor { get; set; }
 

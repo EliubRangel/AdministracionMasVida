@@ -37,6 +37,21 @@ namespace AdministracionMasVidaDbContext.Controllers
             var result = _GrupoPequenoService.RemoveLider(IdLider, IdGp);
             return StatusCode(result.StatusCode, result);
         }
+        [HttpPost]
+        [Route("AsignarMentor")]
+        public ActionResult AsignarMentor(AsignarMentorDto dto)
+        {
+            var result = _GrupoPequenoService.AsignarMentor(dto);
+            return StatusCode(result.StatusCode, result);
+        }
+        [HttpDelete]
+        [Route("RemoveMentor")]
+        public ActionResult DesAsignarMentor(int Id)
+        {
+            var result = _GrupoPequenoService.DesAsignarMentor(Id);
+            return StatusCode(result.StatusCode, result);
+        }
+
     }
 }
 

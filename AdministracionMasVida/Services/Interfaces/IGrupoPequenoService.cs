@@ -9,6 +9,9 @@ namespace AdministracionMasVidaDbContext.Services.Interfaces
 		ResultApi RegistrarGp(GrupoPequeno Gp);
 		ResultApi AsignarLiderGp(AsignarLiderGpDto dto);
 		ResultApi RemoveLider(int IdLider, int IdGp);
+		ResultApi AsignarMentor(AsignarMentorDto dto);
+		ResultApi DesAsignarMentor(int Id);
+	
     }
 }
 
