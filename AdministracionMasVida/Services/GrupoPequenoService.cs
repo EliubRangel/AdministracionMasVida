@@ -138,7 +138,7 @@ namespace AdministracionMasVidaDbContext.Services
 				result.StatusCode = 404;
 				return result;
 			}
-			if(Gp.Mentor!=null)
+			if (Gp.Mentor != null)
 			{
 				result.Message = $"No se puede asignar mentor por que este grupo ya tiene";
 				result.IsError = true;
@@ -177,29 +177,29 @@ namespace AdministracionMasVidaDbContext.Services
 			return result;
 
 		}
-		public ResultApi DesAsignarMentor(int IdMentor , int IdGp)
+		public ResultApi DesAsignarMentor(int IdMentor, int IdGp)
 		{
 			ResultApi result = new ResultApi();
 			var Mentor = dbContext.Servidor
 				.FirstOrDefault(x => x.Id == IdMentor);
-            if (Mentor == null)
-            {
-                result.Message = $"No se encontro mentor con el Id {IdMentor}";
-                result.IsError = true;
-                result.StatusCode = 404;
-                return result;
-            }
+			if (Mentor == null)
+			{
+				result.Message = $"No se encontro mentor con el Id {IdMentor}";
+				result.IsError = true;
+				result.StatusCode = 404;
+				return result;
+			}
 			var Gp = dbContext.GrupoPequeno
-				.Include(x=> x.Mentor)
+				.Include(x => x.Mentor)
 				.FirstOrDefault(x => x.Id == IdGp);
-			if(Gp==null)
+			if (Gp == null)
 			{
 				result.Message = $"No se encontro grupo con el id {IdGp}";
 				result.IsError = true;
 				result.StatusCode = 404;
 				return result;
 			}
-			if (Gp.Mentor.Id!= IdMentor)
+			if (Gp.Mentor.Id != IdMentor)
 			{
 				result.Message = $"El servidor {IdMentor} no es el mentor de este grupo";
 				result.IsError = true;
@@ -215,7 +215,27 @@ namespace AdministracionMasVidaDbContext.Services
 			result.IsError = false;
 			result.StatusCode = 200;
 			return result;
-        }
+		}
+		public ResultApi RegistrarMiembro(int IdGp)
+		{
+			ResultApi result = new ResultApi();
+			var Gp = dbContext.GrupoPequeno
+				.FirstOrDefault(x => x.Id == IdGp);
+			if (Gp == null)
+			{
+				result.IsError = true;
+				result.Message = $"No se encontro el grupo pequeno con el Id {IdGp} ";
+				result.StatusCode = 404;
+				return result;
+			}
+			dbContext.GrupoPequeno.Add(Gp);	
+			dbContext.SaveChanges();
+			result.Message=$"Se registro correctamente el miembro al grupo {IdGp}";
+			result.IsError = false;
+			result.StatusCode=200;
+			return result;	
+		}
+	
+		
 	}
 }
-

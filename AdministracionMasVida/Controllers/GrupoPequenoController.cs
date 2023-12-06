@@ -45,10 +45,25 @@ namespace AdministracionMasVidaDbContext.Controllers
             return StatusCode(result.StatusCode, result);
         }
         [HttpDelete]
-        [Route("RemoveMentor")]
-        public ActionResult DesAsignarMentor(int Id)
+        [Route("EliminarGp")]
+        public ActionResult EliminarGp(int Id)
         {
-            var result = _GrupoPequenoService.DesAsignarMentor(Id);
+            var result = _GrupoPequenoService.EliminarGp(Id);
+            return StatusCode(result.StatusCode, result);
+        }
+
+        [HttpDelete]
+        [Route("RemoveMentor")]
+        public ActionResult DesAsignarMentor(int IdMentor, int IdGp)
+        {
+            var result = _GrupoPequenoService.DesAsignarMentor(IdMentor, IdGp);
+            return StatusCode(result.StatusCode, result);
+        }
+        [HttpPost]
+        [Route("RegistrarMiembro")]
+        public ActionResult RegistrarMiembro(int IdGp)
+        {
+            var result= _GrupoPequenoService.RegistrarMiembro(IdGp);
             return StatusCode(result.StatusCode, result);
         }
 
