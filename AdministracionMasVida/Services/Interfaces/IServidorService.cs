@@ -7,9 +7,10 @@ namespace AdministracionMasVidaDbContext.Services.Interfaces
 	public interface IServidorService
 	{
 		ResultApi NewServidor(Servidor servidor);
-		ResultApi Get();
+		ResultApi ConsultarServidor(int Id);
 		ResultApi ActualizarServidor(Servidor servidor);
 		ResultApi EliminarServidor(int Id);
-	}
+        ResultApi ConsultarServidores();
+    }
 }
 

@@ -1,6 +1,8 @@
 ﻿
 
 
+using AdministracionMasVida.Services;
+using AdministracionMasVida.Services.Interfaces;
 using AdministracionMasVidaDbContext.DbContexts;
 using AdministracionMasVidaDbContext.Services;
 using AdministracionMasVidaDbContext.Services.Interfaces;
@@ -22,6 +24,7 @@ builder.Services
         options.UseMySql(constr, ServerVersion.AutoDetect(constr)));
 
 builder.Services.AddScoped<IServidorService, ServidorService>();
+builder.Services.AddScoped<ILugaresMvService, lugaresMvService>();
 builder.Services.AddScoped<IGrupoPequenoService, GrupoPequenoService>();
 
 var app = builder.Build();

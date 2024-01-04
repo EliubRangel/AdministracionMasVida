@@ -10,7 +10,6 @@ namespace AdministracionMasVidaDbContext.Services
 	public class GrupoPequenoService : IGrupoPequenoService
 	{
 		private readonly AdministracionMasVidaDbcontext dbContext;
-
 		public GrupoPequenoService(AdministracionMasVidaDbcontext dbContext)
 		{
 			this.dbContext = dbContext;
@@ -216,9 +215,10 @@ namespace AdministracionMasVidaDbContext.Services
 			result.StatusCode = 200;
 			return result;
 		}
-		public ResultApi RegistrarMiembro(int IdGp)
+		public ResultApi RegistrarMiembro(int IdGp, AsignarMiembroDto dto)
 		{
 			ResultApi result = new ResultApi();
+			
 			var Gp = dbContext.GrupoPequeno
 				.FirstOrDefault(x => x.Id == IdGp);
 			if (Gp == null)
@@ -228,14 +228,38 @@ namespace AdministracionMasVidaDbContext.Services
 				result.StatusCode = 404;
 				return result;
 			}
-			dbContext.GrupoPequeno.Add(Gp);	
-			dbContext.SaveChanges();
-			result.Message=$"Se registro correctamente el miembro al grupo {IdGp}";
-			result.IsError = false;
-			result.StatusCode=200;
-			return result;	
-		}
-	
+			if (dto.Nombre == null && dto.Apellido== null && dto.Telefono==null&& dto.Correo==null) 
+			{
+				result.IsError= true;
+				result.Message = "Llene todos los espacios";
+				result.StatusCode = 404;
+				return result;
+			}
 		
-	}
+			Miembro Miembro = new Miembro()
+			{
+				Nombre =dto.Nombre,
+				Apellido = dto.Apellido,
+				Telefono = dto.Telefono,
+				Correo = dto.Correo
+			};
+
+			dbContext.Add(Miembro);
+			dbContext.SaveChanges();
+			result.IsError = false;
+			result.Message = "Se agrego miembro correctamente";
+			result.StatusCode = 200;
+			return result;
+		}
+        public ResultApi ConsultarGp()
+        {
+            ResultApi result = new ResultApi();
+            var Gp = dbContext.GrupoPequeno.ToList();
+            result.Data = Gp;
+            result.Message = "Ok";
+            result.StatusCode = 200;
+            return result;
+			
+        }
+    }
 }

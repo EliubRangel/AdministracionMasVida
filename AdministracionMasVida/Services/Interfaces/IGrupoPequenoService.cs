@@ -12,9 +12,10 @@ namespace AdministracionMasVidaDbContext.Services.Interfaces
 		ResultApi AsignarMentor(AsignarMentorDto dto);
 		ResultApi EliminarGp(int Id);
 		ResultApi DesAsignarMentor(int IdMentor, int IdGp);
-		ResultApi RegistrarMiembro(int IdGp);
+		ResultApi RegistrarMiembro(int IdGp, AsignarMiembroDto dto);
+		ResultApi ConsultarGp();
 
-	  
+
     }
 }
 

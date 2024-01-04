@@ -8,13 +8,10 @@ namespace AdministracionMasVidaDbContext.Entities
 		public string Apellido { get; set; }
 		public string Telefono { get; set; }
 		public string Correo { get; set; }
-		public ICollection<GrupoPequeno> grupoPequenos { get; set; }
+		public GrupoPequeno? grupoPequenos { get; set; }
 
 
-		public Miembro()
-		{
-			this.grupoPequenos = new List<GrupoPequeno>();
-		}
+		
 	}
 }
 

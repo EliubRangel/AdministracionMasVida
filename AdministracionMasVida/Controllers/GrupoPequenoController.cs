@@ -10,7 +10,7 @@ namespace AdministracionMasVidaDbContext.Controllers
     [ApiController]
     [Route("[controller]")]
     public class GrupoPequenoController : Controller
-	{
+    {
         private readonly IGrupoPequenoService _GrupoPequenoService;
         public GrupoPequenoController(IGrupoPequenoService GrupoPequenoService)
         {
@@ -31,8 +31,9 @@ namespace AdministracionMasVidaDbContext.Controllers
             return StatusCode(result.StatusCode, result);
         }
         [HttpDelete]
+        [Route("EliminarLider")]
 
-        public ActionResult RemoveLider(int IdLider, int IdGp)
+        public ActionResult RemoveLider( int IdLider, int IdGp)
         {
             var result = _GrupoPequenoService.RemoveLider(IdLider, IdGp);
             return StatusCode(result.StatusCode, result);
@@ -61,9 +62,16 @@ namespace AdministracionMasVidaDbContext.Controllers
         }
         [HttpPost]
         [Route("RegistrarMiembro")]
-        public ActionResult RegistrarMiembro(int IdGp)
+        public ActionResult RegistrarMiembro([FromQuery]int IdGp,[FromBody] AsignarMiembroDto dto)
         {
-            var result= _GrupoPequenoService.RegistrarMiembro(IdGp);
+            var result = _GrupoPequenoService.RegistrarMiembro(IdGp, dto);
+            return StatusCode(result.StatusCode, result);
+        }
+        [HttpGet]
+        [Route("ConsultarGp")]
+        public ActionResult ConsultarGp()
+        {
+            var result =_GrupoPequenoService.ConsultarGp();
             return StatusCode(result.StatusCode, result);
         }
 

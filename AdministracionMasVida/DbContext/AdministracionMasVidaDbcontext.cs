@@ -1,4 +1,6 @@
 ﻿using System;
+using AdministracionMasVida.Entities;
+using AdministracionMasVida.Models;
 using AdministracionMasVidaDbContext.Entities;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,7 +11,9 @@ namespace AdministracionMasVidaDbContext.DbContexts
         public DbSet<GrupoPequeno> GrupoPequeno { get; set; }
         public DbSet<Miembro> Miembro { get; set; }
         public DbSet<Servidor> Servidor { get; set; }
-
+        public DbSet<LugaresMv> LugaresMv { get; set; }
+        public DbSet<EventosMv> EventosMv { get; set; }
+             
 
         public AdministracionMasVidaDbcontext(DbContextOptions<AdministracionMasVidaDbcontext> options)
          : base(options)

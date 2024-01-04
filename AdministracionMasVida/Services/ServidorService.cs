@@ -27,15 +27,25 @@ namespace AdministracionMasVidaDbContext.Services
             return result;
         }
 
-        public ResultApi Get()
+        public ResultApi ConsultarServidor(int id) 
         {
             ResultApi result = new ResultApi();
-            var Servidor = dbContext.Servidor.ToList();
-            result.Data = Servidor;
+            var Servidor= dbContext.Servidor.FirstOrDefault(x => x.Id == id);
+            if (Servidor == null)
+            {
+                result.IsError = true;
+                result.Message=$"No se encontro el servidor con el Id {id}";
+                result.StatusCode = 404;
+                return result;
+            }
+            result.IsError= false;
             result.Message = "Ok";
-            result.StatusCode = 200;
+            result.Data = Servidor;
+            result.StatusCode= 200;
             return result;
         }
+
+        
 
         public ResultApi ActualizarServidor(Servidor servidor)
         {
@@ -84,6 +94,15 @@ namespace AdministracionMasVidaDbContext.Services
             result.Message = $"Se elimino el servidor con el id {servidor.Id}";
             result.StatusCode = 200;
             result.Data = servidor;
+            return result;
+        }
+        public ResultApi ConsultarServidores()
+        {
+            ResultApi result = new ResultApi();
+            var Servidor = dbContext.Servidor.ToList();
+            result.Data = Servidor;
+            result.Message = "Ok";
+            result.StatusCode = 200;
             return result;
         }
     }
