@@ -7,5 +7,7 @@ namespace AdministracionMasVida.Services.Interfaces
     {
         ResultApi RegistrarLugar(LugaresMv Lugar);
         ResultApi Get(int Id);
+        ResultApi EliminarLugar(int Id);
+        ResultApi ModificarLugar(LugaresMv Lugar);
     }
 }

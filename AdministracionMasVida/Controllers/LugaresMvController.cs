@@ -31,6 +31,18 @@ namespace AdministracionMasVida.Controllers
             var result =_ILugaresMvService.Get(Id);
             return StatusCode(result.StatusCode, result);
         }
+        [HttpDelete("EliminarLugar")]
+        public ActionResult EliminarLugar(int Id) 
+        {
+            var result = _ILugaresMvService.EliminarLugar(Id);
+            return StatusCode(result.StatusCode, result);
+        }
+        [HttpPut("Modificar")]
+        public ActionResult ModificarLugar(LugaresMv lugares) 
+        {
+            var result = _ILugaresMvService.ModificarLugar(lugares);
+            return StatusCode(result.StatusCode, result);
+        }
 
 
     }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using AdministracionMasVida.Entities;
 
 namespace AdministracionMasVidaDbContext.Entities
 {
@@ -16,7 +17,7 @@ namespace AdministracionMasVidaDbContext.Entities
 		public string Descripcion { get; set; }
 		public ICollection<Miembro>? Miembro { get; set; }
 		public Servidor? Mentor { get; set; }
-
+		public ICollection<EventosMv> eventosMv { get; set; }
 
 		public GrupoPequeno()
 		{

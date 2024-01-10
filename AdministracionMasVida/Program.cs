@@ -26,6 +26,7 @@ builder.Services
 builder.Services.AddScoped<IServidorService, ServidorService>();
 builder.Services.AddScoped<ILugaresMvService, lugaresMvService>();
 builder.Services.AddScoped<IGrupoPequenoService, GrupoPequenoService>();
+builder.Services.AddScoped<IEventosMvService, EventosMvService>();
 
 var app = builder.Build();
 

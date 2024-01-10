@@ -3,6 +3,7 @@ using System;
 using AdministracionMasVidaDbContext.DbContexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AdministracionMasVida.Migrations
 {
     [DbContext(typeof(AdministracionMasVidaDbcontext))]
-    partial class AdministracionMasVidaDbcontextModelSnapshot : ModelSnapshot
+    [Migration("20240110192925_MasVida")]
+    partial class MasVida
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -32,7 +35,7 @@ namespace AdministracionMasVida.Migrations
                     b.Property<DateTime>("Fecha")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<int?>("GpId")
+                    b.Property<int>("GpId")
                         .HasColumnType("int");
 
                     b.Property<int?>("LugarId")
@@ -188,7 +191,9 @@ namespace AdministracionMasVida.Migrations
                 {
                     b.HasOne("AdministracionMasVidaDbContext.Entities.GrupoPequeno", "Gp")
                         .WithMany("eventosMv")
-                        .HasForeignKey("GpId");
+                        .HasForeignKey("GpId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("AdministracionMasVida.Entities.LugaresMv", "Lugar")
                         .WithMany("Evento")
